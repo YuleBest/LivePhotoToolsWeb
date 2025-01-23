@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查看照片信息 - 动态照片工具箱 Web</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@300;400;500;700&family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <a href="../index.html" class="back-button waves-effect">
+                <i class="material-icons">arrow_back</i>
+            </a>
+            <h1 class="page-title">查看照片信息</h1>
+        </div>
+
+        <main>
+            <div class="page-content">
+                <div class="file-field input-field">
+                    <label>照片文件</label>
+                    <div class="btn blue">
+                        <span>选择文件</span>
+                        <input type="file" id="infoPhoto" accept="image/*">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="选择或拖放照片文件">
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <label for="infoLang">显示语言</label>
+                    <select id="infoLang" class="browser-default">
+                        <option value="zh-cn">中文简体</option>
+                        <option value="zh-tw">中文繁体</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+
+                <button id="viewInfoBtn" class="btn-large waves-effect waves-light blue">查看信息</button>
+
+                <div class="result-area">
+                    <div id="resultContent"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="center-align">
+            <p>By Yule | <a href="https://github.com/YuleBest/LivePhotoToolsWeb" target="_blank" class="blue-text">GitHub</a></p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/pages/info.js"></script>
+</body>
+</html> 

@@ -4,119 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>动态照片工具箱 Web</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@300;400;500;700&family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>动态照片工具箱</h1>
-            <p class="subtitle">Live Photo Tools Web</p>
+        <header class="center-align">
+            <h1 class="blue-text text-darken-2">动态照片工具箱</h1>
+            <p class="subtitle grey-text text-darken-1">Live Photo Tools Web</p>
         </header>
 
         <main>
-            <div class="tools-container">
-                <!-- 合成工具 -->
-                <div class="tool-card" id="synthesize">
-                    <h2>合成动态照片</h2>
-                    <div class="tool-content">
-                        <div class="os-select">
-                            <label>选择系统:</label>
-                            <select id="synOS">
-                                <option value="MIUI">小米 MIUI/HyperOS</option>
-                                <option value="ColorOS" disabled>OPPO ColorOS (开发中)</option>
-                            </select>
-                        </div>
-                        <div class="file-inputs">
-                            <div class="file-input">
-                                <label>静态图片:</label>
-                                <input type="file" id="staticImage" accept="image/*">
-                            </div>
-                            <div class="file-input">
-                                <label>视频文件:</label>
-                                <input type="file" id="videoFile" accept="video/*">
-                            </div>
-                        </div>
-                        <button id="synthesizeBtn" class="action-btn">开始合成</button>
+            <div class="feature-list">
+                <a href="pages/separate.html" class="feature-item waves-effect">
+                    <i class="material-icons">filter</i>
+                    <div class="feature-content">
+                        <h2>拆分动态照片 <span class="test-badge">测试中</span></h2>
+                        <p>从动态照片中提取图片和视频</p>
                     </div>
-                </div>
-
-                <!-- 拆分工具 -->
-                <div class="tool-card" id="separate">
-                    <h2>拆分动态照片</h2>
-                    <div class="tool-content">
-                        <div class="os-select">
-                            <label>选择系统:</label>
-                            <select id="sepOS">
-                                <option value="MIUI">小米 MIUI/HyperOS</option>
-                                <option value="ColorOS">OPPO ColorOS</option>
-                            </select>
-                        </div>
-                        <div class="file-input">
-                            <label>动态照片:</label>
-                            <input type="file" id="livePhoto" accept="image/*">
-                        </div>
-                        <button id="separateBtn" class="action-btn">开始拆分</button>
+                    <i class="material-icons navigate">chevron_right</i>
+                </a>
+                <a href="pages/info.html" class="feature-item waves-effect">
+                    <i class="material-icons">info</i>
+                    <div class="feature-content">
+                        <h2>查看照片信息 <span class="test-badge">测试中</span></h2>
+                        <p>查看照片的详细信息和元数据</p>
                     </div>
-                </div>
-
-                <!-- 信息查看工具 -->
-                <div class="tool-card" id="info">
-                    <h2>查看照片信息</h2>
-                    <div class="tool-content">
-                        <div class="file-input">
-                            <label>选择照片:</label>
-                            <input type="file" id="infoPhoto" accept="image/*">
-                        </div>
-                        <div class="lang-select">
-                            <label>显示语言:</label>
-                            <select id="infoLang">
-                                <option value="zh-cn">中文简体</option>
-                                <option value="zh-tw">中文繁体</option>
-                                <option value="en">English</option>
-                            </select>
-                        </div>
-                        <button id="viewInfoBtn" class="action-btn">查看信息</button>
+                    <i class="material-icons navigate">chevron_right</i>
+                </a>
+                <a href="javascript:void(0)" class="feature-item waves-effect" data-feature="synthesize">
+                    <i class="material-icons">add_photo_alternate</i>
+                    <div class="feature-content">
+                        <h2>合成动态照片 <span class="dev-badge">开发中</span></h2>
+                        <p>将静态图片和视频合成为动态照片</p>
                     </div>
-                </div>
-            </div>
+                    <i class="material-icons navigate">chevron_right</i>
+                </a>
 
-            <!-- 结果显示区域 -->
-            <div class="result-container" id="resultArea">
-                <div class="result-header">
-                    <h3>处理结果</h3>
-                    <button id="clearResult" class="clear-btn">清除</button>
-                </div>
-                <div class="result-content" id="resultContent"></div>
-                <div class="download-buttons" id="downloadButtons" style="display: none;">
-                    <button id="downloadImage" class="action-btn">下载图片</button>
-                    <button id="downloadVideo" class="action-btn">下载视频</button>
-                </div>
             </div>
         </main>
 
-        <footer>
-            <p>By Yule | <a href="https://github.com/YuleBest" target="_blank">GitHub</a></p>
+        <footer class="center-align">
+            <p>By Yule | <a href="https://github.com/YuleBest/LivePhotoToolsWeb" target="_blank" class="blue-text">GitHub</a></p>
         </footer>
     </div>
 
-    <script src="js/main.js"></script>
-    <script src="js/xiaomi.js"></script>
-    <script src="js/oppo.js"></script>
+    <!-- 开发中提示对话框 -->
+    <div id="devModal" class="modal">
+        <div class="modal-content">
+            <h4>功能开发中</h4>
+            <p>该功能正在开发中，敬请期待！</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-blue btn-flat">知道了</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        window.onerror = function(message, source, lineno, colno, error) {
-            console.error('全局错误:', {
-                message: message,
-                source: source,
-                lineno: lineno,
-                colno: colno,
-                error: error
+        document.addEventListener('DOMContentLoaded', function() {
+            M.AutoInit();
+
+            // 初始化模态框
+            const modal = M.Modal.init(document.getElementById('devModal'));
+
+            // 为开发中的功能添加点击事件
+            document.querySelectorAll('.feature-item[data-feature]').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.open();
+                });
             });
-            if (window.showResult) {
-                window.showResult('发生错误: ' + message, true);
-            }
-            return false;
-        };
+        });
     </script>
 </body>
 </html> 

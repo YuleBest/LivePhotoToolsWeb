@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拆分动态照片 - 动态照片工具箱 Web</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@300;400;500;700&family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <a href="../index.html" class="back-button waves-effect">
+                <i class="material-icons">arrow_back</i>
+            </a>
+            <h1 class="page-title">拆分动态照片</h1>
+        </div>
+
+        <main>
+            <div class="page-content">
+                <div class="input-field os-select">
+                    <label for="sepOS">选择系统</label>
+                    <select id="sepOS" class="browser-default">
+                        <option value="MIUI">小米 MIUI/HyperOS</option>
+                        <option value="ColorOS">OPPO ColorOS</option>
+                    </select>
+                </div>
+
+                <div class="file-field input-field">
+                    <label>动态照片</label>
+                    <div class="btn blue">
+                        <span>选择文件</span>
+                        <input type="file" id="livePhoto" accept="image/*">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="选择或拖放动态照片文件">
+                    </div>
+                </div>
+
+                <button id="separateBtn" class="btn-large waves-effect waves-light blue">开始拆分</button>
+
+                <div class="result-area">
+                    <div id="resultContent"></div>
+                    <div id="downloadButtons" style="display: none;">
+                        <button id="downloadImage" class="btn waves-effect waves-light blue">
+                            <i class="material-icons left">image</i>下载图片
+                        </button>
+                        <button id="downloadVideo" class="btn waves-effect waves-light blue">
+                            <i class="material-icons left">videocam</i>下载视频
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="center-align">
+            <p>By Yule | <a href="https://github.com/YuleBest/LivePhotoToolsWeb" target="_blank" class="blue-text">GitHub</a></p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/xiaomi.js"></script>
+    <script src="../js/pages/separate.js"></script>
+</body>
+</html> 
